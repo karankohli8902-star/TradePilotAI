@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d1117;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: #161b22;
+    border-bottom: 2px solid #2ea043;
+}
+
+header h1 {
+    font-size: 40px;
+    color: #2ea043;
+}
+
+header p {
+    color: #c9d1d9;
+    margin-top: 10px;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #161b22;
+    width: 350px;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #30363d;
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+.card h2 {
+    color: #58a6ff;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 18px;
+}
+.market-status{
+    width:90%;
+    max-width:1200px;
+    margin:20px auto;
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+}
+
+.market-status h2{
+    color:#2ea043;
+    margin-bottom:10px;
+}
+
+.market-status p{
+    color:#c9d1d9;
+}
+.best-trade{
+    width:90%;
+    max-width:1200px;
+    margin:20px auto 40px;
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:15px;
+    padding:20px;
+}
+
+.best-trade h2{
+    color:#f0b90b;
+    margin-bottom:15px;
+}
+
+.best-trade p{
+    margin:8px 0;
+}
