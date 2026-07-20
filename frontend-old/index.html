@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradePilot AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="top-bar">
+    <span>🟢 Market : OPEN</span>
+    <span id="time">Loading...</span>
+</div>
+
+<header>
+    <h1>📈 TradePilot AI</h1>
+    <p>AI Powered Nifty & Sensex Trading Dashboard</p>
+
+    <nav>
+        <button>Dashboard</button>
+        <button>NIFTY 50</button>
+        <button>SENSEX</button>
+        <button>History</button>
+        <button>Settings</button>
+    </nav>
+</header>
+
+<section class="market-status">
+    <h2>🟢 Market Status : OPEN</h2>
+    <p>Trading Time : 9:15 AM - 3:30 PM</p>
+</section>
+
+<section class="signal-banner">
+    <h2>🔥 AI Signal</h2>
+    <h1 id="ai-signal">NO TRADE</h1>
+    <p id="signal-message">Waiting for High Probability Setup...</p>
+</section>
+
+<main>
+
+<div class="card">
+<h2>NIFTY 50</h2>
+
+<p><strong>Price:</strong> <span id="nifty-price">Loading...</span></p>
+<p><strong>Trend:</strong> <span id="nifty-trend">Waiting...</span></p>
+<p><strong>Signal:</strong> No Trade</p>
+<p><strong>Entry:</strong> --</p>
+<p><strong>Stop Loss:</strong> --</p>
+<p><strong>Target:</strong> --</p>
+<p><strong>Confidence:</strong> --%</p>
+
+</div>
+
+<div class="card">
+
+<h2>SENSEX</h2>
+
+<p><strong>Price:</strong> <span id="sensex-price">Loading...</span></p>
+<p><strong>Trend:</strong> <span id="sensex-trend">Waiting...</span></p>
+<p><strong>Signal:</strong> No Trade</p>
+<p><strong>Entry:</strong> --</p>
+<p><strong>Stop Loss:</strong> --</p>
+<p><strong>Target:</strong> --</p>
+<p><strong>Confidence:</strong> --%</p>
+
+</div>
+
+</main>
+
+<section class="best-trade">
+<h2>⭐ Best Trade Today</h2>
+
+<p><strong>Market:</strong> Waiting...</p>
+<p><strong>Signal:</strong> No Trade</p>
+<p><strong>Confidence:</strong> --%</p>
+
+</section>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
