@@ -1,10 +1,12 @@
-import TradingChart from "./components/TradingChart";
+import History from "./pages/History";
+import Settings from "./pages/Settings";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Chart from "./pages/Chart";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import MarketCard from "./components/MarketCard";
-import SignalCard from "./components/SignalCard";
 import { getMarketData } from "./services/marketService";
 function App() {
   const [marketData, setMarketData] = useState(null);
@@ -17,39 +19,19 @@ useEffect(() => {
 
   loadData();
 }, []);
-  return (
-    <div className="app">
+  return (return (
+  <div className="app">
+    <Header />
+    <Navbar />
 
-      <Header />
-      <Navbar />
-
-      <SignalCard />
-
-      <div className="cards">
-
-        <MarketCard
-  market="NIFTY 50"
-  price={marketData?.nifty.price || "Loading..."}
-  trend={marketData?.nifty.trend || "Waiting..."}
-  signal={marketData?.nifty.signal || "No Trade"}
-  entry={marketData?.nifty.entry || "--"}
-  stopLoss={marketData?.nifty.stopLoss || "--"}
-  target={marketData?.nifty.target || "--"}
-/>
-
-        <MarketCard
-  market="SENSEX"
-  price={marketData?.sensex.price || "Loading..."}
-  trend={marketData?.sensex.trend || "Waiting..."}
-  signal={marketData?.sensex.signal || "No Trade"}
-  entry={marketData?.sensex.entry || "--"}
-  stopLoss={marketData?.sensex.stopLoss || "--"}
-  target={marketData?.sensex.target || "--"}
-/>
-
-      </div>
-<TradingChart />
-    </div>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/chart" element={<Chart />} />
+      <Route path="/history" element={<History />} />
+<Route path="/settings" element={<Settings />} />
+    </Routes>
+  </div>
+);
   );
 }
 

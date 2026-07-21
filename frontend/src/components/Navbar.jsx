@@ -1,11 +1,23 @@
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <nav className="navbar">
-      <button>Dashboard</button>
-      <button>NIFTY 50</button>
-      <button>SENSEX</button>
-      <button>History</button>
-      <button>Settings</button>
+      <Link to="/">
+        <button>Dashboard</button>
+      </Link>
+
+      <Link to="/chart">
+        <button>Chart</button>
+      </Link>
+
+      <Link to="/history">
+        <button>History</button>
+      </Link>
+
+      <Link to="/settings">
+        <button>Settings</button>
+      </Link>
     </nav>
   );
 }
