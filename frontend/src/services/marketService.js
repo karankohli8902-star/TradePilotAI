@@ -1,21 +1,7 @@
 export async function getMarketData() {
-  return {
-    nifty: {
-      price: "24,350",
-      trend: "Bullish",
-      signal: "BUY",
-      entry: "24,360",
-      stopLoss: "24,300",
-      target: "24,500",
-    },
+  const response = await fetch("http://localhost:5000/api/market");
 
-    sensex: {
-      price: "80,150",
-      trend: "Bullish",
-      signal: "BUY",
-      entry: "80,200",
-      stopLoss: "80,050",
-      target: "80,500",
-    },
-  };
+  const data = await response.json();
+
+  return data;
 }
