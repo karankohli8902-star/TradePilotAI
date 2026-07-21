@@ -1,46 +1,50 @@
+import { useEffect, useState } from "react";
 import "./App.css";
-
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import MarketCard from "./components/MarketCard";
+import SignalCard from "./components/SignalCard";
+import { getMarketData } from "./services/marketService";
 function App() {
+  const [marketData, setMarketData] = useState(null);
+
+useEffect(() => {
+  async function loadData() {
+    const data = await getMarketData();
+    setMarketData(data);
+  }
+
+  loadData();
+}, []);
   return (
     <div className="app">
 
-      <header className="header">
-        <h1>📈 TradePilot AI</h1>
-        <p>AI Powered Nifty & Sensex Trading Dashboard</p>
-      </header>
+      <Header />
+      <Navbar />
 
-      <section className="signal">
-        <h2>🔥 AI Signal</h2>
-        <h1>NO TRADE</h1>
-        <p>Waiting for High Probability Setup...</p>
-      </section>
+      <SignalCard />
 
       <div className="cards">
 
-        <div className="card">
-          <h2>NIFTY 50</h2>
+        <MarketCard
+  market="NIFTY 50"
+  price={marketData?.nifty.price || "Loading..."}
+  trend={marketData?.nifty.trend || "Waiting..."}
+  signal={marketData?.nifty.signal || "No Trade"}
+  entry={marketData?.nifty.entry || "--"}
+  stopLoss={marketData?.nifty.stopLoss || "--"}
+  target={marketData?.nifty.target || "--"}
+/>
 
-          <p>Price : Loading...</p>
-          <p>Trend : Waiting...</p>
-          <p>Signal : No Trade</p>
-          <p>Entry : --</p>
-          <p>Stop Loss : --</p>
-          <p>Target : --</p>
-
-        </div>
-
-        <div className="card">
-
-          <h2>SENSEX</h2>
-
-          <p>Price : Loading...</p>
-          <p>Trend : Waiting...</p>
-          <p>Signal : No Trade</p>
-          <p>Entry : --</p>
-          <p>Stop Loss : --</p>
-          <p>Target : --</p>
-
-        </div>
+        <MarketCard
+  market="SENSEX"
+  price={marketData?.sensex.price || "Loading..."}
+  trend={marketData?.sensex.trend || "Waiting..."}
+  signal={marketData?.sensex.signal || "No Trade"}
+  entry={marketData?.sensex.entry || "--"}
+  stopLoss={marketData?.sensex.stopLoss || "--"}
+  target={marketData?.sensex.target || "--"}
+/>
 
       </div>
 

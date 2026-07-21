@@ -75,4 +75,47 @@ body{
 
 .card p{
   margin:10px 0;
+}.navbar{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  padding:20px;
+  background:#161b22;
+}
+
+.navbar button{
+  background:#238636;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  transition:.3s;
+}
+
+.navbar button:hover{
+  background:#2ea043;
+}
+.badge{
+    margin-left:10px;
+    padding:5px 12px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.BUY{
+    background:#2ea043;
+    color:white;
+}
+
+.SELL{
+    background:#da3633;
+    color:white;
+}
+
+.No{
+    background:#f0b90b;
+    color:black;
 }
