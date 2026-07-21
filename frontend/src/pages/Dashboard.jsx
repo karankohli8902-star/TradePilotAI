@@ -1,9 +1,11 @@
+import MarketStatus from "../components/MarketStatus";
 import SignalCard from "../components/SignalCard";
 import MarketCard from "../components/MarketCard";
 
 function Dashboard() {
   return (
     <>
+      <MarketStatus />
       <SignalCard />
 
       <div className="cards">

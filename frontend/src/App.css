@@ -119,3 +119,23 @@ body{
     background:#f0b90b;
     color:black;
 }
+.market-status{
+  width:90%;
+  max-width:1200px;
+  margin:25px auto;
+  background:#161b22;
+  border:1px solid #30363d;
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+}
+
+.market-status h2{
+  color:#2ea043;
+  margin-bottom:10px;
+}
+
+.market-status p{
+  margin:8px 0;
+  color:#c9d1d9;
+}
