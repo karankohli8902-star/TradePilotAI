@@ -1,20 +1,32 @@
 import { useEffect, useRef } from "react";
 
-function TradingChart() {
+function TradingChart({ market }) {
   const chartRef = useRef(null);
 
   useEffect(() => {
+    chartRef.current.innerHTML = "";
+
+    const symbols = {
+      NIFTY: "NSE:NIFTY",
+      BANKNIFTY: "NSE:BANKNIFTY",
+      SENSEX: "BSE:SENSEX",
+      FINNIFTY: "NSE:FINNIFTY",
+      MIDCPNIFTY: "NSE:MIDCPNIFTY",
+      GOLD: "MCX:GOLD",
+      "CRUDE OIL": "MCX:CRUDEOIL",
+      USDINR: "FX_IDC:USDINR",
+    };
+
     const script = document.createElement("script");
 
     script.src =
       "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
 
-    script.type = "text/javascript";
     script.async = true;
 
     script.innerHTML = JSON.stringify({
       autosize: true,
-      symbol: "NSE:NIFTY",
+      symbol: symbols[market] || "NSE:NIFTY",
       interval: "15",
       timezone: "Asia/Kolkata",
       theme: "dark",
@@ -26,16 +38,18 @@ function TradingChart() {
     });
 
     chartRef.current.appendChild(script);
-  }, []);
+  }, [market]);
 
   return (
     <div
-      className="tradingview-widget-container"
       ref={chartRef}
-      style={{ height: "600px", width: "90%", margin: "30px auto" }}
-    >
-      <div style={{ height: "100%" }} />
-    </div>
+      className="tradingview-widget-container"
+      style={{
+        height: "600px",
+        width: "90%",
+        margin: "30px auto",
+      }}
+    />
   );
 }
 

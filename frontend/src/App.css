@@ -139,3 +139,43 @@ body{
   margin:8px 0;
   color:#c9d1d9;
 }
+.live-clock{
+  margin-top:15px;
+  font-size:22px;
+  color:#f0b90b;
+  font-weight:bold;
+}
+.watchlist{
+  width:90%;
+  max-width:1200px;
+  margin:25px auto;
+  background:#161b22;
+  border:1px solid #30363d;
+  border-radius:15px;
+  padding:20px;
+}
+
+.watchlist h2{
+  color:#58a6ff;
+  margin-bottom:15px;
+}
+
+.watch-btn{
+  margin:8px;
+  padding:10px 18px;
+  border:none;
+  border-radius:8px;
+  background:#238636;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.watch-btn:hover{
+  background:#2ea043;
+}
+.active-btn{
+  background:#f0b90b;
+  color:black;
+  font-weight:bold;
+}

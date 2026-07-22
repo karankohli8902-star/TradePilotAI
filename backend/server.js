@@ -8,9 +8,9 @@ app.use(cors());
 app.get("/api/market", (req, res) => {
   res.json({
     nifty: {
-      price: "24,350",
+      price: "88,888",
       trend: "Bullish",
-      signal: "BUY",
+      signal: "SUPER BUY",
       entry: "24,360",
       stopLoss: "24,300",
       target: "24,500",
