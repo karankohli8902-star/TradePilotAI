@@ -1,3 +1,4 @@
+import { generateSignal } from "../services/aiService";
 import { useState, useEffect, useContext } from "react";
 import { getMarketData } from "../services/marketService";
 import { MarketContext } from "../context/MarketContext";
@@ -7,6 +8,8 @@ import SignalCard from "../components/SignalCard";
 import MarketCard from "../components/MarketCard";
 
 function Dashboard() {
+  const niftyAI = generateSignal(marketData?.nifty?.trend);
+const sensexAI = generateSignal(marketData?.sensex?.trend);
   const { selectedMarket, setSelectedMarket } = useContext(MarketContext);
   const [marketData, setMarketData] = useState(null);
   useEffect(() => {
@@ -37,7 +40,7 @@ function Dashboard() {
           market="NIFTY 50"
           price={marketData?.nifty.price || "Loading..."}
 trend={marketData?.nifty.trend || "Loading..."}
-signal={marketData?.nifty.signal || "Loading..."}
+signal={niftyAI.signal}
 entry={marketData?.nifty.entry || "--"}
 stopLoss={marketData?.nifty.stopLoss || "--"}
 target={marketData?.nifty.target || "--"}
@@ -47,7 +50,7 @@ target={marketData?.nifty.target || "--"}
           market="SENSEX"
          price={marketData?.sensex.price || "Loading..."}
 trend={marketData?.sensex.trend || "Loading..."}
-signal={marketData?.sensex.signal || "Loading..."}
+signal={sensexAI.signal}
 entry={marketData?.sensex.entry || "--"}
 stopLoss={marketData?.sensex.stopLoss || "--"}
 target={marketData?.sensex.target || "--"}

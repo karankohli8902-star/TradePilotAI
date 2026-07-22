@@ -1,3 +1,4 @@
+const yahooFinance = require("yahoo-finance2").default;
 const express = require("express");
 const cors = require("cors");
 
@@ -5,26 +6,37 @@ const app = express();
 
 app.use(cors());
 
-app.get("/api/market", (req, res) => {
-  res.json({
-    nifty: {
-      price: "88,888",
-      trend: "Bullish",
-      signal: "SUPER BUY",
-      entry: "24,360",
-      stopLoss: "24,300",
-      target: "24,500",
-    },
+app.get("/api/market", async (req, res) => {
+  try {
+    const nifty = await yahooFinance.quote("^NSEI");
 
-    sensex: {
-      price: "80,150",
-      trend: "Bullish",
-      signal: "BUY",
-      entry: "80,200",
-      stopLoss: "80,050",
-      target: "80,500",
-    },
-  });
+    res.json({
+      nifty: {
+        price: nifty.regularMarketPrice,
+        trend:
+          nifty.regularMarketChange >= 0 ? "Bullish" : "Bearish",
+        signal: "Waiting...",
+        entry: "--",
+        stopLoss: "--",
+        target: "--",
+      },
+
+      sensex: {
+        price: "Loading...",
+        trend: "Loading...",
+        signal: "Loading...",
+        entry: "--",
+        stopLoss: "--",
+        target: "--",
+      },
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      error: "Failed to fetch market data",
+    });
+  }
 });
 
 app.listen(5000, () => {
