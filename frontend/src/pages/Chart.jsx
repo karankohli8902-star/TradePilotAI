@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MarketContext } from "../context/MarketContext";
-import TradingChart from "../components/TradingChart";
+import LightweightChart from "../components/LightweightChart";
 
 function Chart() {
   const { selectedMarket } = useContext(MarketContext);
@@ -11,7 +11,7 @@ function Chart() {
         📈 {selectedMarket} Live Chart
       </h1>
 
-      <TradingChart market={selectedMarket} />
+      <LightweightChart market={selectedMarket} />
     </div>
   );
 }

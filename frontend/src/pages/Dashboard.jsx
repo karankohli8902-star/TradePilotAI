@@ -8,10 +8,11 @@ import SignalCard from "../components/SignalCard";
 import MarketCard from "../components/MarketCard";
 
 function Dashboard() {
-  const niftyAI = generateSignal(marketData?.nifty?.trend);
-const sensexAI = generateSignal(marketData?.sensex?.trend);
+
   const { selectedMarket, setSelectedMarket } = useContext(MarketContext);
   const [marketData, setMarketData] = useState(null);
+   const niftyAI = generateSignal(marketData?.nifty?.trend);
+const sensexAI = generateSignal(marketData?.sensex?.trend);
   useEffect(() => {
   async function loadData() {
     const data = await getMarketData();
@@ -33,29 +34,31 @@ const sensexAI = generateSignal(marketData?.sensex?.trend);
   Selected Market: {selectedMarket}
 </h2>
       <MarketStatus />
-      <SignalCard />
+     <SignalCard
+  signal={niftyAI.signal}
+  confidence={niftyAI.confidence}
+  reason={niftyAI.reason}
+/>
 
       <div className="cards">
-        <MarketCard
-          market="NIFTY 50"
-          price={marketData?.nifty.price || "Loading..."}
-trend={marketData?.nifty.trend || "Loading..."}
-signal={niftyAI.signal}
-entry={marketData?.nifty.entry || "--"}
-stopLoss={marketData?.nifty.stopLoss || "--"}
-target={marketData?.nifty.target || "--"}
-        />
+  {marketData &&
+    Object.entries(marketData).map(([key, market]) => {
+      const ai = generateSignal(market.trend);
 
+      return (
         <MarketCard
-          market="SENSEX"
-         price={marketData?.sensex.price || "Loading..."}
-trend={marketData?.sensex.trend || "Loading..."}
-signal={sensexAI.signal}
-entry={marketData?.sensex.entry || "--"}
-stopLoss={marketData?.sensex.stopLoss || "--"}
-target={marketData?.sensex.target || "--"}
+          key={key}
+          market={key.toUpperCase()}
+          price={market.price}
+          trend={market.trend}
+          signal={ai.signal}
+          entry={market.entry || "--"}
+          stopLoss={market.stopLoss || "--"}
+          target={market.target || "--"}
         />
-      </div>
+      );
+    })}
+</div>
     </>
   );
 }
